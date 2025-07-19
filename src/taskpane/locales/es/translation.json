@@ -1,5 +1,10 @@
 {
   "introduction_title": "¡Revoluciona tus Búsquedas!",
   "introduction_text": "Olvídate de las limitaciones de BUSCARV y BUSCARH. Con <b>BUSCARX</b>, entras a una nueva era de búsquedas en Excel. Es más potente, más flexible y mucho más fácil de usar. <br><br>Prepárate para buscar en cualquier dirección y decirle adiós a los errores #N/A. <br><br><b>¡Comencemos!</b>",
-  "prepare_data_button": "Preparar Datos"
+  "prepare_data_button": "Preparar Datos",
+  "xlookup_usage_title": "Usando BUSCARX",
+  "xlookup_usage_description": "Ahora que tienes tus datos, aprendamos a usar la función BUSCARX. Ingresa la fórmula BUSCARX en la celda de resultado (E18) para encontrar el precio del producto según su ID.",
+  "xlookup_formula_example_title": "Fórmula de Ejemplo:",
+  "verify_formula_button": "Verificar Fórmula",
+  "set_column_width_instruction": "Ahora, ajustemos el ancho de las columnas de la A a la F a 14 para una mejor legibilidad."
 }

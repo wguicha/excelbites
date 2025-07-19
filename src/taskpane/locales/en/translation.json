@@ -1,5 +1,10 @@
 {
   "introduction_title": "Revolutionize Your Searches!",
   "introduction_text": "Forget the limitations of VLOOKUP and HLOOKUP. With <b>XLOOKUP</b>, you enter a new era of searches in Excel. It's more powerful, more flexible, and much easier to use. <br><br>Get ready to search in any direction and say goodbye to #N/A errors. <br><br><b>Let's get started!</b>",
-  "prepare_data_button": "Prepare Data"
+  "prepare_data_button": "Prepare Data",
+  "xlookup_usage_title": "Using XLOOKUP",
+  "xlookup_usage_description": "Now that you have your data, let's learn how to use the XLOOKUP function. Enter the XLOOKUP formula in the result cell (E18) to find the price of the product based on its ID.",
+  "xlookup_formula_example_title": "Example Formula:",
+  "verify_formula_button": "Verify Formula",
+  "set_column_width_instruction": "Now, let's adjust the column width for columns A to F to 14 for better readability."
 }

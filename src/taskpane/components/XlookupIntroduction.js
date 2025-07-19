@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import logo from "../../../assets/logo_excel_bites.png";
-import { setRangeBold, clearRange, autofitColumns } from "../excelFormatters";
+import { setRangeBold, clearRange, autofitColumns, setColumnWidth, setRangeCenter, setRangeRight } from "../excelFormatters";
 
 const StyledContainer = styled.div`
   text-align: center;
@@ -45,7 +45,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const XlookupIntroduction = () => {
+const XlookupIntroduction = ({ goToNextStep }) => {
   const { t } = useTranslation();
 
   const handlePrepareData = async () => {
@@ -60,6 +60,7 @@ const XlookupIntroduction = () => {
         const headers = [["ID Producto", "Producto", "Precio"]];
         sheet.getRange("A5:C5").values = headers;
         setRangeBold(context, "A5:C5");
+        setRangeCenter(context, "A5:C5");
 
         // Insert example data starting from row 6
         const data = [
@@ -75,18 +76,23 @@ const XlookupIntroduction = () => {
           [110, "External Hard Drive", 90],
         ];
         sheet.getRange("A6:C" + (data.length + 5)).values = data;
+        setRangeCenter(context, "A6:A" + (data.length + 5));
 
-        // Set up search ID and result cells below the data
-        const searchRow = data.length + 7; // 2 rows below the end of data
-        sheet.getRange("E" + searchRow).values = [["Buscar ID:"]];
-        setRangeBold(context, "E" + searchRow);
-        sheet.getRange("F" + searchRow).values = [[103]]; // Default search ID
+        // Set up search ID and result cells
+        sheet.getRange("E5").values = [["Buscar ID:"]];
+        setRangeBold(context, "E5");
+        sheet.getRange("F5").values = [[103]]; // Default search ID
+        setRangeCenter(context, "F5");
 
-        const resultRow = data.length + 8; // 1 row below search ID
-        sheet.getRange("E" + resultRow).values = [["Resultado:"]];
-        setRangeBold(context, "E" + resultRow);
+        sheet.getRange("E7").values = [["Resultado:"]];
+        setRangeBold(context, "E7");
+        sheet.getRange("F7").values = [[""]]; // Empty cell for result
 
-        await autofitColumns(context, sheet.getUsedRange());
+        setRangeRight(context, "E5:E15");
+
+        setColumnWidth(context, ["A", "C", "D", "E", "F"], 75);
+        setColumnWidth(context, ["B"], 100);
+        //await autofitColumns(context, sheet.getUsedRange());
         await context.sync();
       });
     } catch (error) {
@@ -100,6 +106,7 @@ const XlookupIntroduction = () => {
       <StyledTitle>{t("introduction_title")}</StyledTitle>
       <StyledParagraph dangerouslySetInnerHTML={{ __html: t("introduction_text") }} />
       <StyledButton onClick={handlePrepareData}>{t("prepare_data_button")}</StyledButton>
+      <StyledButton onClick={goToNextStep}>Next</StyledButton>
     </StyledContainer>
   );
 };

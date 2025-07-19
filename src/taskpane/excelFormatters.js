@@ -20,3 +20,26 @@ export function autofitColumns(context, usedRange) {
     return range;
   });
 }
+
+export function setColumnWidth(context, columnsOrRange, width) {
+  const sheet = context.workbook.worksheets.getActiveWorksheet();
+  if (Array.isArray(columnsOrRange)) {
+    columnsOrRange.forEach(column => {
+      sheet.getRange(column + ":" + column).format.columnWidth = width;
+    });
+  } else {
+    sheet.getRange(columnsOrRange).format.columnWidth = width;
+  }
+}
+
+export function setRangeCenter(context, rangeAddress) {
+  const range = context.workbook.worksheets.getActiveWorksheet().getRange(rangeAddress);
+  range.format.horizontalAlignment = Excel.HorizontalAlignment.center;
+  return range;
+}
+
+export function setRangeRight(context, rangeAddress) {
+  const range = context.workbook.worksheets.getActiveWorksheet().getRange(rangeAddress);
+  range.format.horizontalAlignment = Excel.HorizontalAlignment.right;
+  return range;
+}
