@@ -53,6 +53,21 @@ const XlookupIntroduction = () => {
       <img src={logo} alt="ExcelBites Logo" className="logo" />
       <h1 className="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary">{t("introduction_title")}</h1>
       <p className="ms-font-m ms-fontColor-neutralSecondary" dangerouslySetInnerHTML={{ __html: t("introduction_text") }}></p>
+      <h2 className="ms-font-l ms-fontWeight-semibold">{t("advantages_title")}</h2>
+      <ul className="ms-List">
+        <li className="ms-ListItem">
+          <span className="ms-ListItem-primaryText">&#10003; {t("advantage1")}</span>
+        </li>
+        <li className="ms-ListItem">
+          <span className="ms-ListItem-primaryText">&#10003; {t("advantage2")}</span>
+        </li>
+        <li className="ms-ListItem">
+          <span className="ms-ListItem-primaryText">&#10003; {t("advantage3")}</span>
+        </li>
+        <li className="ms-ListItem">
+          <span className="ms-ListItem-primaryText">&#10003; {t("advantage4")}</span>
+        </li>
+      </ul>
       <button className="ms-Button ms-Button--primary" onClick={handlePrepareData}>
         <span className="ms-Button-label">{t("prepare_data_button")}</span>
       </button>

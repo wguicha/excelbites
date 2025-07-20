@@ -1,10 +1,19 @@
 {
   "introduction_title": "Revolutionize Your Searches!",
-  "introduction_text": "Forget the limitations of VLOOKUP and HLOOKUP. With <b>XLOOKUP</b>, you enter a new era of searches in Excel. It's more powerful, more flexible, and much easier to use. <br><br>Get ready to search in any direction and say goodbye to #N/A errors. <br><br><b>Let's get started!</b>",
+  "introduction_text": "Forget the limitations of VLOOKUP and HLOOKUP. With <b>XLOOKUP</b>, you enter a new era of searches in Excel. It's more powerful, more flexible, and much easier to use. <br><br><b>Let's get started!</b>",
   "prepare_data_button": "Prepare Data",
-  "xlookup_usage_title": "Using XLOOKUP",
-  "xlookup_usage_description": "Now that you have your data, let's learn how to use the XLOOKUP function. Enter the XLOOKUP formula in the result cell (E18) to find the price of the product based on its ID.",
-  "xlookup_formula_example_title": "Example Formula:",
-  "verify_formula_button": "Verify Formula",
-  "set_column_width_instruction": "Now, let's adjust the column width for columns A to F to 14 for better readability."
+  "formula_test_title": "Let's Test the Formula with a simple search",
+  "formula_test_text": "We are going to insert a simple formula in cell F7 that will search for the Product corresponding to the ID in cell F5",
+  "lookup_value_label": "The value you want to find:",
+  "lookup_value_placeholder": "e.g., F5",
+  "lookup_array_label": "The range of cells where XLOOKUP will search for the value:",
+  "lookup_array_placeholder": "e.g., A6:A15",
+  "return_array_label": "The range or array of cells from which XLOOKUP will return the result:",
+  "return_array_placeholder": "e.g., C6:C15",
+  "insert_formula_button": "Insert Formula",
+  "advantages_title": "Advantages of XLOOKUP",
+  "advantage1": "It can look in any direction (not just to the right).",
+  "advantage2": "It returns entire ranges, not just a single value.",
+  "advantage3": "It has simple error handling (if not found).",
+  "advantage4": "Its default option is an exact match (safer)."
 }

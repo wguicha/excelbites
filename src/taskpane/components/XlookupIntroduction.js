@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import logo from "../../../assets/logo_excel_bites.png";
-import { setRangeBold, clearRange, autofitColumns, setColumnWidth, setRangeCenter, setRangeRight } from "../excelFormatters";
+import { setRangeBold, clearRange, autofitColumns, setColumnWidth, setRangeCenter, setRangeRight, setFontSize, setRangeItalic } from "../excelFormatters";
 
 const StyledContainer = styled.div`
   text-align: center;
@@ -28,6 +28,41 @@ const StyledParagraph = styled.p`
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 20px;
+`;
+
+const StyledAdvantagesContainer = styled.div`
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: left;
+`;
+
+const StyledAdvantagesTitle = styled.h2`
+  color: #217346;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+`;
+
+const StyledAdvantagesList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const StyledAdvantageItem = styled.li`
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+`;
+
+const CheckMark = styled.span`
+  color: #217346;
+  font-size: 20px;
+  margin-right: 10px;
 `;
 
 const StyledButton = styled.button`
@@ -56,6 +91,16 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         // Clear existing data in a larger range to ensure old data is removed
         clearRange(context, "A:G");
 
+        // Insert title
+        sheet.getRange("A1").values = [["ExcelBites: La poderosa BUSCARH"]];
+        setRangeBold(context, "A1");
+        setFontSize(context, "A1", 18);
+
+        // Insert formula structure
+        sheet.getRange("A2").values = [["'=BUSCARX(valor_buscado, matriz_buscada, matriz_devuelta, [si_no_se_encuentra], [modo_de_coincidencia], [modo_de_búsqueda])"]];
+        setFontSize(context, "A2", 15);
+        setRangeItalic(context, "A2");
+
         // Insert headers starting from row 5
         const headers = [["ID Producto", "Producto", "Precio"]];
         sheet.getRange("A5:C5").values = headers;
@@ -81,7 +126,7 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         // Set up search ID and result cells
         sheet.getRange("E5").values = [["Buscar ID:"]];
         setRangeBold(context, "E5");
-        sheet.getRange("F5").values = [[103]]; // Default search ID
+        sheet.getRange("F5").values = [[104]]; // Default search ID
         setRangeCenter(context, "F5");
 
         sheet.getRange("E7").values = [["Resultado:"]];
@@ -93,6 +138,10 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         setColumnWidth(context, ["A", "C", "D", "E", "F"], 75);
         setColumnWidth(context, ["B"], 100);
         //await autofitColumns(context, sheet.getUsedRange());
+
+        // Set cursor to F7
+        sheet.getRange("F7").select();
+
         await context.sync();
       });
     } catch (error) {
@@ -105,6 +154,25 @@ const XlookupIntroduction = ({ goToNextStep }) => {
       <StyledLogo src={logo} alt="ExcelBites Logo" />
       <StyledTitle>{t("introduction_title")}</StyledTitle>
       <StyledParagraph dangerouslySetInnerHTML={{ __html: t("introduction_text") }} />
+
+      <StyledAdvantagesContainer>
+        <StyledAdvantagesTitle>{t("advantages_title")}</StyledAdvantagesTitle>
+        <StyledAdvantagesList>
+          <StyledAdvantageItem>
+            <CheckMark>✔</CheckMark> {t("advantage1")}
+          </StyledAdvantageItem>
+          <StyledAdvantageItem>
+            <CheckMark>✔</CheckMark> {t("advantage2")}
+          </StyledAdvantageItem>
+          <StyledAdvantageItem>
+            <CheckMark>✔</CheckMark> {t("advantage3")}
+          </StyledAdvantageItem>
+          <StyledAdvantageItem>
+            <CheckMark>✔</CheckMark> {t("advantage4")}
+          </StyledAdvantageItem>
+        </StyledAdvantagesList>
+      </StyledAdvantagesContainer>
+
       <StyledButton onClick={handlePrepareData}>{t("prepare_data_button")}</StyledButton>
       <StyledButton onClick={goToNextStep}>Next</StyledButton>
     </StyledContainer>

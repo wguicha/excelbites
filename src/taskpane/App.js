@@ -1,12 +1,12 @@
 import React from "react";
 import Lesson from "./components/Lesson";
 import XlookupIntroduction from "./components/XlookupIntroduction";
-import XlookupFunctionUsage from "./components/XlookupFunctionUsage";
+import XlookupFormulaTest from "./components/XlookupFormulaTest";
 
 const App = () => {
   const xlookupLessonSteps = [
     XlookupIntroduction,
-    XlookupFunctionUsage,
+    XlookupFormulaTest,
     // Add more steps here for the XLOOKUP lesson
   ];
 

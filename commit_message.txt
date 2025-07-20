@@ -1,1 +1,1 @@
-Initial commit: ExcelBites project setup with XLOOKUP lesson and basic styling.
+Feat: Implement XLOOKUP function usage step, dynamic formula verification, and enhanced Excel formatting functions (setColumnWidth, setRangeCenter, setRangeRight).

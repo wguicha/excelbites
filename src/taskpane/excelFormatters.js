@@ -43,3 +43,15 @@ export function setRangeRight(context, rangeAddress) {
   range.format.horizontalAlignment = Excel.HorizontalAlignment.right;
   return range;
 }
+
+export function setFontSize(context, rangeAddress, fontSize) {
+  const range = context.workbook.worksheets.getActiveWorksheet().getRange(rangeAddress);
+  range.format.font.size = fontSize;
+  return range;
+}
+
+export function setRangeItalic(context, rangeAddress) {
+  const range = context.workbook.worksheets.getActiveWorksheet().getRange(rangeAddress);
+  range.format.font.italic = true;
+  return range;
+}
