@@ -78,11 +78,11 @@ const ButtonContainer = styled.div`
   margin-top: 10px;
 `;
 
-const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
+const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
   const { t } = useTranslation();
   const [lookupValue, setLookupValue] = useState("F5");
   const [lookupArray, setLookupArray] = useState("A6:A15");
-  const [returnArray, setReturnArray] = useState("C6:C15");
+  const [returnArray, setReturnArray] = useState("B6:C15"); // Changed to two columns
 
   const handleInsertFormula = async () => {
     try {
@@ -93,7 +93,7 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
         
         console.log("Attempting to insert formula:", formula);
         
-        const targetRange = sheet.getRange("F7");
+        const targetRange = sheet.getRange("F9"); // Changed target cell to F9
         targetRange.formulas = [[formula]];
         
         // Ensure calculation mode is automatic and force recalculation
@@ -104,8 +104,8 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
         
         targetRange.load("formula, values");
         await context.sync();
-        console.log("Formula read from F7 after sync:", targetRange.formula);
-        console.log("Value read from F7 after sync:", targetRange.values[0][0]);
+        console.log("Formula read from F9 after sync:", targetRange.formula);
+        console.log("Value read from F9 after sync:", targetRange.values[0][0]);
 
         console.log("Formula inserted successfully!");
       });
@@ -116,8 +116,8 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
 
   return (
     <StyledContainer>
-      <StyledTitle>{t("formula_test_title")}</StyledTitle>
-      <StyledText>{t("formula_test_text")}</StyledText>
+      <StyledTitle>{t("multiple_search_title")}</StyledTitle>
+      <StyledText>{t("multiple_search_text")}</StyledText>
       <StyledForm>
         <StyledLabel>{t("lookup_value_label")}</StyledLabel>
         <StyledInput type="text" value={lookupValue} onChange={(e) => setLookupValue(e.target.value)} />
@@ -130,11 +130,11 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
       </StyledForm>
       <StyledButton onClick={handleInsertFormula}>{t("insert_formula_button")}</StyledButton>
       <ButtonContainer>
-        <StyledNavButton onClick={() => { console.log("Previous button clicked in XlookupFormulaTest"); goToPreviousStep(); }}>&#9664;</StyledNavButton>
-        <StyledNavButton onClick={() => { console.log("Next button clicked in XlookupFormulaTest"); goToNextStep(); }}>&#9654;</StyledNavButton>
+        <StyledNavButton onClick={goToPreviousStep}>&#9664;</StyledNavButton>
+        <StyledNavButton onClick={goToNextStep}>&#9654;</StyledNavButton>
       </ButtonContainer>
     </StyledContainer>
   );
 };
 
-export default XlookupFormulaTest;
+export default XlookupMultipleSearch;

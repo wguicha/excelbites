@@ -15,5 +15,7 @@
   "advantage1": "It can look in any direction (not just to the right).",
   "advantage2": "It returns entire ranges, not just a single value.",
   "advantage3": "It has simple error handling (if not found).",
-  "advantage4": "Its default option is an exact match (safer)."
+  "advantage4": "Its default option is an exact match (safer).",
+  "multiple_search_title": "Multiple Column Search",
+  "multiple_search_text": "XLOOKUP can return multiple columns at once. Let's try to get both the Product and Price for the given ID."
 }

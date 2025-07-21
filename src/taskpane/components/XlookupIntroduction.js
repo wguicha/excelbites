@@ -80,6 +80,18 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledNavButton = styled(StyledButton)`
+  background-color: #a9a9a9;
+
+  &:hover {
+    background-color: #808080;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 10px;
+`;
+
 const XlookupIntroduction = ({ goToNextStep }) => {
   const { t } = useTranslation();
 
@@ -92,7 +104,7 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         clearRange(context, "A:G");
 
         // Insert title
-        sheet.getRange("A1").values = [["ExcelBites: La poderosa BUSCARH"]];
+        sheet.getRange("A1").values = [["ExcelBites: La poderosa BUSCARX"]];
         setRangeBold(context, "A1");
         setFontSize(context, "A1", 18);
 
@@ -129,9 +141,12 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         sheet.getRange("F5").values = [[104]]; // Default search ID
         setRangeCenter(context, "F5");
 
-        sheet.getRange("E7").values = [["Resultado:"]];
+        sheet.getRange("E7").values = [["Formula simple:"]];
         setRangeBold(context, "E7");
         sheet.getRange("F7").values = [[""]]; // Empty cell for result
+
+        sheet.getRange("E9").values = [["Formula Múltiple:"]];
+        setRangeBold(context, "E9");
 
         setRangeRight(context, "E5:E15");
 
@@ -174,7 +189,9 @@ const XlookupIntroduction = ({ goToNextStep }) => {
       </StyledAdvantagesContainer>
 
       <StyledButton onClick={handlePrepareData}>{t("prepare_data_button")}</StyledButton>
-      <StyledButton onClick={goToNextStep}>Next</StyledButton>
+      <ButtonContainer>
+        <StyledNavButton onClick={() => { console.log("Next button clicked in XlookupIntroduction"); goToNextStep(); }}>&#9654;</StyledNavButton>
+      </ButtonContainer>
     </StyledContainer>
   );
 };

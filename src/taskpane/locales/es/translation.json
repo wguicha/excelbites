@@ -15,5 +15,7 @@
   "advantage1": "Puede buscar en cualquier dirección (no solo a la derecha).",
   "advantage2": "Devuelve rangos enteros, no solo un valor.",
   "advantage3": "Tiene un manejo de errores simple (si no encuentra).",
-  "advantage4": "Su opción por defecto es la coincidencia exacta (más seguro)."
+  "advantage4": "Su opción por defecto es la coincidencia exacta (más seguro).",
+  "multiple_search_title": "Búsqueda de Múltiples Columnas",
+  "multiple_search_text": "BUSCARX puede devolver múltiples columnas a la vez. Intentemos obtener tanto el Producto como el Precio para el ID dado."
 }
