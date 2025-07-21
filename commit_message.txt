@@ -1,1 +1,5 @@
-Feat: Implement XLOOKUP function usage step, dynamic formula verification, and enhanced Excel formatting functions (setColumnWidth, setRangeCenter, setRangeRight).
+Fix: Load correct App component and improve debugging
+
+- Modified `taskpane.js` to import `App.jsx` from the `components` folder instead of the old `App.js`.
+- Removed the unused `App.js` file to prevent confusion.
+- Added no-cache headers to `taskpane.html` to aid debugging by preventing aggressive caching in the Office add-in webview.

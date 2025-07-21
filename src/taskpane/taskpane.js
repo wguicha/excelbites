@@ -1,6 +1,6 @@
 /* global document, Office, module */
 
-import App from "./App";
+import App from "./components/App";
 import { initializeIcons } from "@fluentui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
