@@ -35,5 +35,7 @@
   "search_id_label": "Buscar ID:",
   "simple_formula_label": "Formula Simple:",
   "multiple_formula_label": "Formula Múltiple:",
-  "checkmark": "✔"
+  "checkmark": "✔",
+  "formula_inserted_success": "¡Fórmula insertada con éxito!",
+  "formula_inserted_error": "Error al insertar la fórmula. Por favor, inténtalo de nuevo."
 }

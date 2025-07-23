@@ -35,5 +35,7 @@
   "search_id_label": "Search ID:",
   "simple_formula_label": "Simple Formula:",
   "multiple_formula_label": "Multiple Formula:",
-  "checkmark": "✔"
+  "checkmark": "✔",
+  "formula_inserted_success": "Formula inserted successfully!",
+  "formula_inserted_error": "Error inserting formula. Please try again."
 }

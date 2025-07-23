@@ -79,11 +79,22 @@ const ButtonContainer = styled.div`
   margin-top: 10px;
 `;
 
+const StyledMessage = styled.p`
+  color: #217346;
+  font-weight: bold;
+  margin-top: 10px;
+  background-color: #e6ffe6; /* Light green background for visibility */
+  border: 1px solid #217346; /* Green border for visibility */
+  padding: 5px;
+  border-radius: 4px;
+`;
+
 const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
   const { t } = useTranslation();
   const [lookupValue, setLookupValue] = useState("F5");
   const [lookupArray, setLookupArray] = useState("A6:A15");
   const [returnArray, setReturnArray] = useState("B6:C15"); // Changed to two columns
+  const [message, setMessage] = useState(null);
   const activeInputRef = useRef(null);
   const eventContextRef = useRef(null);
   const lastHighlightedRangeRef = useRef(null);
@@ -173,7 +184,12 @@ const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
         targetRange.load("formula, values");
 
         sheet.getRange("F13").values = "B6:C15";
+        setRangeFillColor(context, "F5", "#DAE9F8");
+        setRangeFillColor(context, "E11:F11", "#DAE9F8");
+        setRangeFillColor(context, "A6:A15", "#FFCDCD");
+        setRangeFillColor(context, "E12:F12", "#FFCDCD");
         setRangeFillColor(context, "B6:C15", "#E8D9F3");
+        setRangeFillColor(context, "E13:F13", "#E8D9F3");
 
         sheet.getRange("F9:G9").select();
 
@@ -182,9 +198,14 @@ const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
         console.log("Value read from F9 after sync:", targetRange.values[0][0]);
 
         console.log("Formula inserted successfully!");
+
+        setMessage(t("formula_inserted_success"));
+        setTimeout(() => setMessage(null), 5000); // Clear message after 5 seconds
       });
     } catch (error) {
       console.error("Error inserting formula:", error);
+      setMessage(t("formula_inserted_error"));
+      setTimeout(() => setMessage(null), 5000); // Clear message after 5 seconds
     }
   };
 
@@ -203,6 +224,7 @@ const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
         <StyledInput type="text" value={returnArray} onFocus={() => handleFocus("returnArray", returnArray)} onChange={(e) => setReturnArray(e.target.value)} />
       </StyledForm>
       <StyledButton onClick={handleInsertFormula}>{t("insert_formula_button")}</StyledButton>
+      {message && <StyledMessage>{message}</StyledMessage>}
       <ButtonContainer>
         <StyledNavButton onClick={goToPreviousStep}>&#9664;</StyledNavButton>
         <StyledNavButton onClick={goToNextStep}>&#9654;</StyledNavButton>

@@ -1,6 +1,5 @@
-feat(UX): Clear cell highlights on lesson step change
+feat(UX): Add confirmation messages to formula tests
 
-- Added `clearAllRangeFills` function to `excelFormatters.js` to remove all cell background colors.
-- Integrated `clearAllRangeFills` into `Lesson.js` to clear highlights when navigating between lesson steps.
-- Applied interactive range selection and synchronized cell highlighting to `XlookupMultipleSearch.js`.
-- Corrected the interactive range selection logic in `XlookupFormulaTest.js` to use `useRef` for stable event handling.
+- Implemented temporary success/error messages after formula insertion in `XlookupFormulaTest.js` and `XlookupMultipleSearch.js`.
+- Messages are displayed for 5 seconds and then disappear.
+- Added corresponding translation keys for confirmation messages in `en/translation.json` and `es/translation.json`.

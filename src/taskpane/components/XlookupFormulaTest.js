@@ -79,11 +79,23 @@ const ButtonContainer = styled.div`
   margin-top: 10px;
 `;
 
+const StyledMessage = styled.p`
+  color: #217346;
+  font-weight: bold;
+  margin-top: 10px;
+  background-color: #e6ffe6; /* Light green background for visibility */
+  border: 1px solid #217346; /* Green border for visibility */
+  padding: 5px;
+  border-radius: 4px;
+`;
+
 const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
   const { t } = useTranslation();
   const [lookupValue, setLookupValue] = useState("F5");
   const [lookupArray, setLookupArray] = useState("A6:A15");
   const [returnArray, setReturnArray] = useState("C6:C15");
+  const [message, setMessage] = useState(null);
+  console.log("Current message state:", message);
   const activeInputRef = useRef(null);
   const eventContextRef = useRef(null);
   const lastHighlightedRangeRef = useRef(null);
@@ -171,15 +183,23 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
 
         setRangeBold(context, "E11:E16");
         setRangeFillColor(context, "F5", "#DAE9F8");
-        setRangeFillColor(context, "E11", "#DAE9F8");
+        setRangeFillColor(context, "E11:F11", "#DAE9F8");
         setRangeFillColor(context, "A6:A15", "#FFCDCD");
         setRangeFillColor(context, "E12:F12", "#FFCDCD");
         setRangeFillColor(context, "C6:C15", "#E8D9F3");
         setRangeFillColor(context, "E13:F13", "#E8D9F3");
+
+        sheet.getRange("F7").select();
+
         await context.sync();
+
+        setMessage(t("formula_inserted_success"));
+        setTimeout(() => setMessage(null), 5000); // Clear message after 5 seconds
       });
     } catch (error) {
       console.error("Error inserting formula:", error);
+      setMessage(t("formula_inserted_error"));
+      setTimeout(() => setMessage(null), 5000); // Clear message after 5 seconds
     }
   };
 
@@ -198,6 +218,7 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
         <StyledInput type="text" value={returnArray} onFocus={() => handleFocus("returnArray", returnArray)} onChange={(e) => setReturnArray(e.target.value)} />
       </StyledForm>
       <StyledButton onClick={handleInsertFormula}>{t("insert_formula_button")}</StyledButton>
+      {message && <StyledMessage>{message}</StyledMessage>}
       <ButtonContainer>
         <StyledNavButton onClick={() => { console.log("Previous button clicked in XlookupFormulaTest"); goToPreviousStep(); }}>&#9664;</StyledNavButton>
         <StyledNavButton onClick={() => { console.log("Next button clicked in XlookupFormulaTest"); goToNextStep(); }}>&#9654;</StyledNavButton>
