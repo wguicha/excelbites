@@ -61,3 +61,16 @@ export function setRangeFillColor(context, rangeAddress, color) {
   range.format.fill.color = color;
   return range;
 }
+
+export function clearRangeFill(context, rangeAddress) {
+  const range = context.workbook.worksheets.getActiveWorksheet().getRange(rangeAddress);
+  range.format.fill.clear();
+  return range;
+}
+
+export function clearAllRangeFills(context) {
+  const sheet = context.workbook.worksheets.getActiveWorksheet();
+  const usedRange = sheet.getUsedRange();
+  usedRange.format.fill.clear();
+  return usedRange;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { clearAllRangeFills } from "../excelFormatters";
 
 const Lesson = ({ steps }) => {
   console.log("Lesson component rendered. steps.length:", steps);
@@ -8,16 +9,24 @@ const Lesson = ({ steps }) => {
     console.log("currentStepIndex changed to:", currentStepIndex);
   }, [currentStepIndex]);
 
-  const goToNextStep = () => {
+  const goToNextStep = async () => {
     console.log("goToNextStep called. Current index:", currentStepIndex);
     if (currentStepIndex < steps.length - 1) {
+      await Excel.run(async (context) => {
+        clearAllRangeFills(context);
+        await context.sync();
+      });
       setCurrentStepIndex(prevIndex => prevIndex + 1);
     }
   };
 
-  const goToPreviousStep = () => {
+  const goToPreviousStep = async () => {
     console.log("goToPreviousStep called. Current index:", currentStepIndex);
     if (currentStepIndex > 0) {
+      await Excel.run(async (context) => {
+        clearAllRangeFills(context);
+        await context.sync();
+      });
       setCurrentStepIndex(prevIndex => prevIndex - 1);
     }
   };

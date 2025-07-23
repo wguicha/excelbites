@@ -1,5 +1,6 @@
-feat(UX): Implement interactive range selection
+feat(UX): Clear cell highlights on lesson step change
 
-- Implemented interactive range selection in the XLOOKUP formula test.
-- Users can now click on an input field and select a range directly in the worksheet.
-- Used `onSelectionChanged` event and `useRef` for a robust implementation that avoids re-rendering issues.
+- Added `clearAllRangeFills` function to `excelFormatters.js` to remove all cell background colors.
+- Integrated `clearAllRangeFills` into `Lesson.js` to clear highlights when navigating between lesson steps.
+- Applied interactive range selection and synchronized cell highlighting to `XlookupMultipleSearch.js`.
+- Corrected the interactive range selection logic in `XlookupFormulaTest.js` to use `useRef` for stable event handling.

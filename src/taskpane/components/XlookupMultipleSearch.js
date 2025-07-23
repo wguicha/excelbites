@@ -1,9 +1,9 @@
 /* global Excel */
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { setRangeBold, setRangeFillColor } from "../excelFormatters";
+import { setRangeBold, setRangeFillColor, clearRangeFill } from "../excelFormatters";
 
 const StyledContainer = styled.div`
   text-align: center;
@@ -84,6 +84,70 @@ const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
   const [lookupValue, setLookupValue] = useState("F5");
   const [lookupArray, setLookupArray] = useState("A6:A15");
   const [returnArray, setReturnArray] = useState("B6:C15"); // Changed to two columns
+  const activeInputRef = useRef(null);
+  const eventContextRef = useRef(null);
+  const lastHighlightedRangeRef = useRef(null);
+
+  useEffect(() => {
+    const registerSelectionHandler = async () => {
+      try {
+        await Excel.run(async (context) => {
+          const sheet = context.workbook.worksheets.getActiveWorksheet();
+          const handler = sheet.onSelectionChanged.add(handleSelectionChange);
+          eventContextRef.current = context;
+          await context.sync();
+        });
+      } catch (error) {
+        console.error("Error registering selection handler:", error);
+      }
+    };
+
+    registerSelectionHandler();
+
+    return () => {
+      if (eventContextRef.current) {
+        eventContextRef.current.workbook.worksheets.getActiveWorksheet().onSelectionChanged.remove(handleSelectionChange);
+      }
+    };
+  }, []);
+
+  const handleSelectionChange = async (event) => {
+    await Excel.run(async (context) => {
+      if (activeInputRef.current) {
+        const rangeAddress = event.address;
+        switch (activeInputRef.current) {
+          case "lookupValue":
+            setLookupValue(rangeAddress);
+            break;
+          case "lookupArray":
+            setLookupArray(rangeAddress);
+            break;
+          case "returnArray":
+            setReturnArray(rangeAddress);
+            break;
+          default:
+            break;
+        }
+        activeInputRef.current = null;
+      }
+    });
+  };
+
+  const handleFocus = async (inputName, rangeAddress) => {
+    activeInputRef.current = inputName;
+    try {
+      await Excel.run(async (context) => {
+        if (lastHighlightedRangeRef.current) {
+          clearRangeFill(context, lastHighlightedRangeRef.current);
+        }
+        setRangeFillColor(context, rangeAddress, "#FFFF00"); // Yellow highlight
+        lastHighlightedRangeRef.current = rangeAddress;
+        await context.sync();
+      });
+    } catch (error) {
+      console.error("Error highlighting range:", error);
+    }
+  };
 
   const handleInsertFormula = async () => {
     try {
@@ -130,13 +194,13 @@ const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
       <StyledText>{t("multiple_search_text")}</StyledText>
       <StyledForm>
         <StyledLabel>{t("lookup_value_label")}</StyledLabel>
-        <StyledInput type="text" value={lookupValue} onChange={(e) => setLookupValue(e.target.value)} />
+        <StyledInput type="text" value={lookupValue} onFocus={() => handleFocus("lookupValue", lookupValue)} onChange={(e) => setLookupValue(e.target.value)} />
 
         <StyledLabel>{t("lookup_array_label")}</StyledLabel>
-        <StyledInput type="text" value={lookupArray} onChange={(e) => setLookupArray(e.target.value)} />
+        <StyledInput type="text" value={lookupArray} onFocus={() => handleFocus("lookupArray", lookupArray)} onChange={(e) => setLookupArray(e.target.value)} />
 
         <StyledLabel>{t("return_array_label")}</StyledLabel>
-        <StyledInput type="text" value={returnArray} onChange={(e) => setReturnArray(e.target.value)} />
+        <StyledInput type="text" value={returnArray} onFocus={() => handleFocus("returnArray", returnArray)} onChange={(e) => setReturnArray(e.target.value)} />
       </StyledForm>
       <StyledButton onClick={handleInsertFormula}>{t("insert_formula_button")}</StyledButton>
       <ButtonContainer>
