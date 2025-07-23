@@ -1,6 +1,6 @@
 /* global Excel */
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { setRangeBold, setRangeFillColor } from "../excelFormatters";
@@ -84,6 +84,55 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
   const [lookupValue, setLookupValue] = useState("F5");
   const [lookupArray, setLookupArray] = useState("A6:A15");
   const [returnArray, setReturnArray] = useState("C6:C15");
+  const activeInputRef = useRef(null);
+  const eventContextRef = useRef(null);
+
+  useEffect(() => {
+    const registerSelectionHandler = async () => {
+      try {
+        await Excel.run(async (context) => {
+          const sheet = context.workbook.worksheets.getActiveWorksheet();
+          const handler = sheet.onSelectionChanged.add(handleSelectionChange);
+          eventContextRef.current = context;
+          await context.sync();
+        });
+      } catch (error) {
+        console.error("Error registering selection handler:", error);
+      }
+    };
+
+    registerSelectionHandler();
+
+    return () => {
+      // Cleanup: Remove the event handler when the component unmounts
+      if (eventContextRef.current) {
+        eventContextRef.current.workbook.worksheets.getActiveWorksheet().onSelectionChanged.remove(handleSelectionChange);
+      }
+    };
+  }, []); // Empty dependency array ensures this runs only once
+
+  const handleSelectionChange = async (event) => {
+    await Excel.run(async (context) => {
+      if (activeInputRef.current) {
+        const rangeAddress = event.address;
+        switch (activeInputRef.current) {
+          case "lookupValue":
+            setLookupValue(rangeAddress);
+            break;
+          case "lookupArray":
+            setLookupArray(rangeAddress);
+            break;
+          case "returnArray":
+            setReturnArray(rangeAddress);
+            break;
+          default:
+            break;
+        }
+        activeInputRef.current = null; // Deactivate after one selection
+      }
+    });
+  };
+
 
   const handleInsertFormula = async () => {
     try {
@@ -109,10 +158,10 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
         // Formatting using formatter function
         setRangeBold(context, "E11:E16");
         setRangeFillColor(context, "F5", "#DAE9F8");
-        setRangeFillColor(context, "E11:F11", "#DAE9F8");
+        setRangeFillColor(context, "E11", "#DAE9F8");
         setRangeFillColor(context, "A6:A15", "#FFCDCD");
         setRangeFillColor(context, "E12:F12", "#FFCDCD");
-        setRangeFillColor(context, "B6:B15", "#E8D9F3");
+        setRangeFillColor(context, "C6:C15", "#E8D9F3");
         setRangeFillColor(context, "E13:F13", "#E8D9F3");
         await context.sync();
       });
@@ -127,13 +176,13 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
       <StyledText>{t("formula_test_text")}</StyledText>
       <StyledForm>
         <StyledLabel>{t("lookup_value_label")}</StyledLabel>
-        <StyledInput type="text" value={lookupValue} onChange={(e) => setLookupValue(e.target.value)} />
+        <StyledInput type="text" value={lookupValue} onFocus={() => activeInputRef.current = "lookupValue"} onChange={(e) => setLookupValue(e.target.value)} />
 
         <StyledLabel>{t("lookup_array_label")}</StyledLabel>
-        <StyledInput type="text" value={lookupArray} onChange={(e) => setLookupArray(e.target.value)} />
+        <StyledInput type="text" value={lookupArray} onFocus={() => activeInputRef.current = "lookupArray"} onChange={(e) => setLookupArray(e.target.value)} />
 
         <StyledLabel>{t("return_array_label")}</StyledLabel>
-        <StyledInput type="text" value={returnArray} onChange={(e) => setReturnArray(e.target.value)} />
+        <StyledInput type="text" value={returnArray} onFocus={() => activeInputRef.current = "returnArray"} onChange={(e) => setReturnArray(e.target.value)} />
       </StyledForm>
       <StyledButton onClick={handleInsertFormula}>{t("insert_formula_button")}</StyledButton>
       <ButtonContainer>

@@ -1,8 +1,5 @@
-feat: Enhance formula test & internationalize UI
+feat(UX): Implement interactive range selection
 
-This commit introduces several improvements to the XLOOKUP lesson:
-
-- Refactored formatting logic into `excelFormatters.js` for better code structure.
-- Added a new `setRangeFillColor` function to change cell background colors.
-- Enhanced the formula test UI by adding a parameter description table and highlighting key cells with color.
-- Completed internationalization by moving all hardcoded strings from components into the translation files.
+- Implemented interactive range selection in the XLOOKUP formula test.
+- Users can now click on an input field and select a range directly in the worksheet.
+- Used `onSelectionChanged` event and `useRef` for a robust implementation that avoids re-rendering issues.
