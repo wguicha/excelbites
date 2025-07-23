@@ -104,17 +104,17 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         clearRange(context, "A:G");
 
         // Insert title
-        sheet.getRange("A1").values = [["ExcelBites: La poderosa BUSCARX"]];
+        sheet.getRange("A1").values = [[t("excelbites_title")]];
         setRangeBold(context, "A1");
         setFontSize(context, "A1", 18);
 
         // Insert formula structure
-        sheet.getRange("A2").values = [["'=BUSCARX(valor_buscado, matriz_buscada, matriz_devuelta, [si_no_se_encuentra], [modo_de_coincidencia], [modo_de_búsqueda])"]];
-        setFontSize(context, "A2", 15);
+        sheet.getRange("A2").values = [[t("xlookup_formula_structure")]];
+        setFontSize(context, "A2", 13);
         setRangeItalic(context, "A2");
 
         // Insert headers starting from row 5
-        const headers = [["ID Producto", "Producto", "Precio"]];
+        const headers = [[t("product_id_header"), t("product_header"), t("price_header")]];
         sheet.getRange("A5:C5").values = headers;
         setRangeBold(context, "A5:C5");
         setRangeCenter(context, "A5:C5");
@@ -136,21 +136,20 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         setRangeCenter(context, "A6:A" + (data.length + 5));
 
         // Set up search ID and result cells
-        sheet.getRange("E5").values = [["Buscar ID:"]];
+        sheet.getRange("E5").values = [[t("search_id_label")]];
         setRangeBold(context, "E5");
         sheet.getRange("F5").values = [[104]]; // Default search ID
-        setRangeCenter(context, "F5");
+        setRangeCenter(context, "F5:G9");
 
-        sheet.getRange("E7").values = [["Formula simple:"]];
+        sheet.getRange("E7").values = [[t("simple_formula_label")]];
         setRangeBold(context, "E7");
         sheet.getRange("F7").values = [[""]]; // Empty cell for result
 
-        sheet.getRange("E9").values = [["Formula Múltiple:"]];
-        setRangeBold(context, "E9");
+        setRangeRight(context, "E5:E16");
 
-        setRangeRight(context, "E5:E15");
-
-        setColumnWidth(context, ["A", "C", "D", "E", "F"], 75);
+        setColumnWidth(context, ["A", "C", "D", "F", "G"], 75);
+        setColumnWidth(context, ["D"], 30);
+        setColumnWidth(context, ["E"], 130);
         setColumnWidth(context, ["B"], 100);
         //await autofitColumns(context, sheet.getUsedRange());
 
@@ -174,16 +173,16 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         <StyledAdvantagesTitle>{t("advantages_title")}</StyledAdvantagesTitle>
         <StyledAdvantagesList>
           <StyledAdvantageItem>
-            <CheckMark>✔</CheckMark> {t("advantage1")}
+            <CheckMark>{t("checkmark")}</CheckMark> {t("advantage1")}
           </StyledAdvantageItem>
           <StyledAdvantageItem>
-            <CheckMark>✔</CheckMark> {t("advantage2")}
+            <CheckMark>{t("checkmark")}</CheckMark> {t("advantage2")}
           </StyledAdvantageItem>
           <StyledAdvantageItem>
-            <CheckMark>✔</CheckMark> {t("advantage3")}
+            <CheckMark>{t("checkmark")}</CheckMark> {t("advantage3")}
           </StyledAdvantageItem>
           <StyledAdvantageItem>
-            <CheckMark>✔</CheckMark> {t("advantage4")}
+            <CheckMark>{t("checkmark")}</CheckMark> {t("advantage4")}
           </StyledAdvantageItem>
         </StyledAdvantagesList>
       </StyledAdvantagesContainer>

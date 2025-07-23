@@ -1,5 +1,8 @@
-Fix: Load correct App component and improve debugging
+feat: Enhance formula test & internationalize UI
 
-- Modified `taskpane.js` to import `App.jsx` from the `components` folder instead of the old `App.js`.
-- Removed the unused `App.js` file to prevent confusion.
-- Added no-cache headers to `taskpane.html` to aid debugging by preventing aggressive caching in the Office add-in webview.
+This commit introduces several improvements to the XLOOKUP lesson:
+
+- Refactored formatting logic into `excelFormatters.js` for better code structure.
+- Added a new `setRangeFillColor` function to change cell background colors.
+- Enhanced the formula test UI by adding a parameter description table and highlighting key cells with color.
+- Completed internationalization by moving all hardcoded strings from components into the translation files.

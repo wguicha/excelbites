@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { setRangeBold, setRangeFillColor } from "../excelFormatters";
 
 const StyledContainer = styled.div`
   text-align: center;
@@ -90,19 +91,28 @@ const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep }) => {
         const sheet = context.workbook.worksheets.getActiveWorksheet();
         // Generate formula with commas as separators
         const formula = `=XLOOKUP(${lookupValue},${lookupArray},${returnArray})`;
-        
+
         console.log("Attempting to insert formula:", formula);
-        
+
+        sheet.getRange("E9").values = [[t("multiple_formula_label")]];
+        setRangeBold(context, "E9");
+
         const targetRange = sheet.getRange("F9"); // Changed target cell to F9
         targetRange.formulas = [[formula]];
-        
+
         // Ensure calculation mode is automatic and force recalculation
         context.workbook.application.calculationMode = Excel.CalculationMode.automatic;
         context.workbook.application.calculate(Excel.CalculationType.full);
 
         await context.sync();
-        
+
         targetRange.load("formula, values");
+
+        sheet.getRange("F13").values = "B6:C15";
+        setRangeFillColor(context, "B6:C15", "#E8D9F3");
+
+        sheet.getRange("F9:G9").select();
+
         await context.sync();
         console.log("Formula read from F9 after sync:", targetRange.formula);
         console.log("Value read from F9 after sync:", targetRange.values[0][0]);

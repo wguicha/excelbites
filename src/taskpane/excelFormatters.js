@@ -55,3 +55,9 @@ export function setRangeItalic(context, rangeAddress) {
   range.format.font.italic = true;
   return range;
 }
+
+export function setRangeFillColor(context, rangeAddress, color) {
+  const range = context.workbook.worksheets.getActiveWorksheet().getRange(rangeAddress);
+  range.format.fill.color = color;
+  return range;
+}

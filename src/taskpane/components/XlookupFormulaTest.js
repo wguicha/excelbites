@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { setRangeBold, setRangeFillColor } from "../excelFormatters";
 
 const StyledContainer = styled.div`
   text-align: center;
@@ -88,26 +89,32 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
     try {
       await Excel.run(async (context) => {
         const sheet = context.workbook.worksheets.getActiveWorksheet();
-        // Generate formula with commas as separators
         const formula = `=XLOOKUP(${lookupValue},${lookupArray},${returnArray})`;
-        
-        console.log("Attempting to insert formula:", formula);
-        
         const targetRange = sheet.getRange("F7");
         targetRange.formulas = [[formula]];
-        
-        // Ensure calculation mode is automatic and force recalculation
-        context.workbook.application.calculationMode = Excel.CalculationMode.automatic;
-        context.workbook.application.calculate(Excel.CalculationType.full);
 
-        await context.sync();
-        
-        targetRange.load("formula, values");
-        await context.sync();
-        console.log("Formula read from F7 after sync:", targetRange.formula);
-        console.log("Value read from F7 after sync:", targetRange.values[0][0]);
+        // Parameter descriptions
+        const descriptions = [
+          [t("param_lookup_value") + ":", lookupValue],
+          [t("param_lookup_array") + ":", lookupArray],
+          [t("param_return_array") + ":", returnArray],
+          [t("if_not_found_label") + ":", t("not_specified")],
+          [t("match_mode_label") + ":", t("exact_match_default")],
+          [t("search_mode_label") + ":", t("first_to_last_default")],
+        ];
 
-        console.log("Formula inserted successfully!");
+        const descriptionRange = sheet.getRange("E11:F16");
+        descriptionRange.values = descriptions;
+
+        // Formatting using formatter function
+        setRangeBold(context, "E11:E16");
+        setRangeFillColor(context, "F5", "#DAE9F8");
+        setRangeFillColor(context, "E11:F11", "#DAE9F8");
+        setRangeFillColor(context, "A6:A15", "#FFCDCD");
+        setRangeFillColor(context, "E12:F12", "#FFCDCD");
+        setRangeFillColor(context, "B6:B15", "#E8D9F3");
+        setRangeFillColor(context, "E13:F13", "#E8D9F3");
+        await context.sync();
       });
     } catch (error) {
       console.error("Error inserting formula:", error);
