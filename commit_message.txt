@@ -1,8 +1,6 @@
-feat(UX): Relocate reset button and refine footer navigation
+feat: Add XLOOKUP Error Handling and Formula Resilience lessons
 
-- Moved the 'Reset Lesson' button from the fixed footer to individual lesson components (`XlookupIntroduction.js`, `XlookupFormulaTest.js`, `XlookupMultipleSearch.js`) to be alongside action buttons.
-- Refined the fixed footer in `App.jsx` to exclusively contain and center the navigation buttons (Previous/Next).
-- Passed the `resetLesson` function as a prop down to the lesson components.
-- Applied compactness styling to `XlookupFormulaTest.js` and `XlookupMultipleSearch.js`.
-- Added `clearAllContentAndFormats` to `excelFormatters.js` for comprehensive sheet clearing on reset.
-- Adjusted lesson progress loading and reset logic to always start from the introduction (step 0) on reset or initial load if no progress is saved.
+- Created `XlookupErrorHandling.js` to demonstrate XLOOKUP's 4th argument for handling non-found values.
+- Created `XlookupFormulaResilience.js` to show how XLOOKUP formulas automatically update when columns are moved.
+- Added new translation keys for both new lessons.
+- Integrated both new components into the `lessonSteps` array in `App.jsx`.

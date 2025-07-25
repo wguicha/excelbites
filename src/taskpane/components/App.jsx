@@ -4,6 +4,7 @@ import Lesson from "./Lesson";
 import XlookupIntroduction from "./XlookupIntroduction";
 import XlookupFormulaTest from "./XlookupFormulaTest";
 import XlookupMultipleSearch from "./XlookupMultipleSearch";
+import XlookupErrorHandling from "./XlookupErrorHandling";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { clearAllContentAndFormats, clearAllRangeFills } from "../excelFormatters";
@@ -62,6 +63,8 @@ const App = (props) => {
     XlookupIntroduction,
     XlookupFormulaTest,
     XlookupMultipleSearch,
+    XlookupErrorHandling,
+    XlookupFormulaResilience,
   ];
 
   // Effect to load currentStepIndex from settings when component mounts and Office is ready

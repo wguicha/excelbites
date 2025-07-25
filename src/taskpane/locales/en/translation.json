@@ -22,6 +22,7 @@
   "param_lookup_array": "Lookup Array",
   "param_return_array": "Return Array",
   "if_not_found_label": "If Not Found",
+  "if_not_found_value": "Code not found",
   "not_specified": "Not specified",
   "match_mode_label": "Match Mode",
   "exact_match_default": "Exact match (default)",
@@ -38,5 +39,8 @@
   "checkmark": "✔",
   "formula_inserted_success": "Formula inserted successfully!",
   "formula_inserted_error": "Error inserting formula. Please try again.",
-  "reset_lesson_button": "Reset Lesson"
+  "reset_lesson_button": "Reset Lesson",
+  "error_handling_title": "Error Handling with XLOOKUP",
+  "error_handling_text": "XLOOKUP allows you to specify a value to return if no match is found. Let's try to search for a non-existent ID and display a custom message.",
+  "param_if_not_found": "If Not Found"
 }

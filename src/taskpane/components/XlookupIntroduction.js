@@ -201,7 +201,7 @@ const XlookupIntroduction = ({ goToNextStep, resetLesson }) => {
       <ButtonContainer>
         <StyledButton onClick={handlePrepareData}>{t("prepare_data_button")}</StyledButton>
         <StyledResetButton onClick={resetLesson}>{t("reset_lesson_button")}</StyledResetButton>
-        <StyledNavButton onClick={() => { console.log("Next button clicked in XlookupIntroduction"); goToNextStep(); }}>&#9654;</StyledNavButton>
+
       </ButtonContainer>
     </StyledContainer>
   );

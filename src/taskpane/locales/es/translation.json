@@ -22,6 +22,7 @@
   "param_lookup_array": "Matriz de Búsqueda",
   "param_return_array": "Matriz de Devolución",
   "if_not_found_label": "Si no se encuentra",
+  "if_not_found_value": "Código no encontrado",
   "not_specified": "No especificado",
   "match_mode_label": "Modo de coincidencia",
   "exact_match_default": "Coincidencia exacta (predeterminado)",
@@ -38,5 +39,8 @@
   "checkmark": "✔",
   "formula_inserted_success": "¡Fórmula insertada con éxito!",
   "formula_inserted_error": "Error al insertar la fórmula. Por favor, inténtalo de nuevo.",
-  "reset_lesson_button": "Reiniciar Lección"
+  "reset_lesson_button": "Reiniciar Lección",
+  "error_handling_title": "Manejo de Errores con BUSCARX",
+  "error_handling_text": "BUSCARX te permite especificar un valor a devolver si no se encuentra ninguna coincidencia. Intentemos buscar un ID inexistente y mostrar un mensaje personalizado.",
+  "param_if_not_found": "Si no se encuentra"
 }
