@@ -2,12 +2,37 @@ import React, { useState, useEffect } from "react";
 import { clearAllRangeFills } from "../excelFormatters";
 
 const Lesson = ({ steps }) => {
-  console.log("Lesson component rendered. steps.length:", steps);
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [currentStepIndex, setCurrentStepIndex] = useState(0); // Initialize to 0
 
+  // Effect to load currentStepIndex from settings when component mounts and Office is ready
+  useEffect(() => {
+    Office.onReady((info) => {
+      if (info.host === Office.HostType.Excel) {
+        if (Office.context && Office.context.document && Office.context.document.settings) {
+          const savedIndex = Office.context.document.settings.get("lessonStepIndex");
+          if (savedIndex !== null && savedIndex !== undefined) {
+            setCurrentStepIndex(parseInt(savedIndex, 10));
+            console.log("Loaded lesson step:", parseInt(savedIndex, 10));
+          }
+        }
+      }
+    });
+  }, []); // Empty dependency array ensures this runs only once on mount
+
+  // Effect to save currentStepIndex to settings whenever it changes
   useEffect(() => {
     console.log("currentStepIndex changed to:", currentStepIndex);
-  }, [currentStepIndex]);
+    if (Office.context && Office.context.document && Office.context.document.settings) {
+      Office.context.document.settings.set("lessonStepIndex", currentStepIndex);
+      Office.context.document.settings.saveAsync((asyncResult) => {
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+          console.error("Error saving settings:", asyncResult.error.message);
+        } else {
+          console.log("Lesson step saved:", currentStepIndex);
+        }
+      });
+    }
+  }, [currentStepIndex]); // This effect runs whenever currentStepIndex changes
 
   const goToNextStep = async () => {
     console.log("goToNextStep called. Current index:", currentStepIndex);
