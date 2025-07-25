@@ -86,6 +86,24 @@ const StyledResetButton = styled(StyledButton)`
   }
 `;
 
+const ButtonContainer = styled.div`
+  margin-top: 8px; /* Reduced margin */
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+`;
+
+const StyledMessage = styled.p`
+  color: #217346;
+  font-weight: bold;
+  margin-top: 8px; /* Reduced margin */
+  background-color: #e6ffe6;
+  border: 1px solid #217346;
+  padding: 4px; /* Reduced padding */
+  border-radius: 4px;
+  font-size: 14px; /* Slightly smaller font size */
+`;
+
 const XlookupMultipleSearch = ({ goToNextStep, goToPreviousStep, resetLesson }) => {
   const { t } = useTranslation();
   const [lookupValue, setLookupValue] = useState("F5");

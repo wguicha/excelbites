@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { clearAllRangeFills } from "../excelFormatters";
 
-const Lesson = ({ steps, currentStepIndex, setCurrentStepIndex, goToNextStep, goToPreviousStep }) => {
+const Lesson = ({ steps, currentStepIndex, setCurrentStepIndex, goToNextStep, goToPreviousStep, resetLesson }) => {
   console.log("Lesson component rendered. currentStepIndex:", currentStepIndex);
 
   const CurrentStepComponent = steps[currentStepIndex];
