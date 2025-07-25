@@ -8,31 +8,31 @@ import { setRangeBold, clearRange, autofitColumns, setColumnWidth, setRangeCente
 
 const StyledContainer = styled.div`
   text-align: center;
-  padding: 20px;
-  background-color: white; /* Fondo blanco */
-  font-family: Arial, sans-serif; /* Fuente más adaptada a un tutorial */
+  padding: 15px; /* Reduced padding */
+  background-color: white;
+  font-family: Arial, sans-serif;
 `;
 
 const StyledLogo = styled.img`
-  max-width: 150px;
-  margin-bottom: 20px;
+  max-width: 120px; /* Slightly smaller logo */
+  margin-bottom: 15px; /* Reduced margin */
 `;
 
 const StyledTitle = styled.h1`
-  color: #217346; /* Excel green */
-  font-size: 28px;
-  margin-bottom: 15px;
+  color: #217346;
+  font-size: 24px; /* Slightly smaller font size */
+  margin-bottom: 10px; /* Reduced margin */
 `;
 
 const StyledParagraph = styled.p`
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  font-size: 14px; /* Slightly smaller font size */
+  line-height: 1.4;
+  margin-bottom: 15px; /* Reduced margin */
 `;
 
 const StyledAdvantagesContainer = styled.div`
-  margin: 20px 0;
-  padding: 15px;
+  margin: 15px 0; /* Reduced margin */
+  padding: 10px; /* Reduced padding */
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -41,8 +41,8 @@ const StyledAdvantagesContainer = styled.div`
 
 const StyledAdvantagesTitle = styled.h2`
   color: #217346;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 18px; /* Slightly smaller font size */
+  margin-bottom: 8px; /* Reduced margin */
   text-align: center;
 `;
 
@@ -53,27 +53,27 @@ const StyledAdvantagesList = styled.ul`
 `;
 
 const StyledAdvantageItem = styled.li`
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 14px; /* Slightly smaller font size */
+  margin-bottom: 5px; /* Reduced margin */
   display: flex;
   align-items: center;
 `;
 
 const CheckMark = styled.span`
   color: #217346;
-  font-size: 20px;
-  margin-right: 10px;
+  font-size: 18px; /* Slightly smaller font size */
+  margin-right: 8px; /* Reduced margin */
 `;
 
 const StyledButton = styled.button`
-  background-color: #217346; /* Excel green */
+  background-color: #217346;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 8px 15px; /* Reduced padding */
+  font-size: 16px; /* Slightly smaller font size */
   cursor: pointer;
   border-radius: 5px;
-  margin: 5px; /* Add some margin for spacing between buttons */
+  margin: 3px; /* Reduced margin */
 
   &:hover {
     background-color: #1a5c38;
@@ -88,11 +88,22 @@ const StyledNavButton = styled(StyledButton)`
   }
 `;
 
-const ButtonContainer = styled.div`
-  margin-top: 10px;
+const StyledResetButton = styled(StyledButton)`
+  background-color: #f44336; /* Red color for reset */
+
+  &:hover {
+    background-color: #d32f2f;
+  }
 `;
 
-const XlookupIntroduction = ({ goToNextStep }) => {
+const ButtonContainer = styled.div`
+  margin-top: 8px; /* Reduced margin */
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+`;
+
+const XlookupIntroduction = ({ goToNextStep, resetLesson }) => {
   const { t } = useTranslation();
 
   const handlePrepareData = async () => {
@@ -187,8 +198,9 @@ const XlookupIntroduction = ({ goToNextStep }) => {
         </StyledAdvantagesList>
       </StyledAdvantagesContainer>
 
-      <StyledButton onClick={handlePrepareData}>{t("prepare_data_button")}</StyledButton>
       <ButtonContainer>
+        <StyledButton onClick={handlePrepareData}>{t("prepare_data_button")}</StyledButton>
+        <StyledResetButton onClick={resetLesson}>{t("reset_lesson_button")}</StyledResetButton>
         <StyledNavButton onClick={() => { console.log("Next button clicked in XlookupIntroduction"); goToNextStep(); }}>&#9654;</StyledNavButton>
       </ButtonContainer>
     </StyledContainer>

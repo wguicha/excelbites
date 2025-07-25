@@ -7,21 +7,21 @@ import { setRangeBold, setRangeFillColor, clearRangeFill } from "../excelFormatt
 
 const StyledContainer = styled.div`
   text-align: center;
-  padding: 20px;
+  padding: 15px; /* Reduced padding */
   background-color: white;
   font-family: Arial, sans-serif;
 `;
 
 const StyledTitle = styled.h1`
   color: #217346;
-  font-size: 28px;
-  margin-bottom: 15px;
+  font-size: 24px; /* Slightly smaller font size */
+  margin-bottom: 10px; /* Reduced margin */
 `;
 
 const StyledText = styled.p`
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  font-size: 14px; /* Slightly smaller font size */
+  line-height: 1.4;
+  margin-bottom: 15px; /* Reduced margin */
 `;
 
 const StyledForm = styled.div`
@@ -29,8 +29,8 @@ const StyledForm = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 0 auto;
-  max-width: 300px;
-  padding: 20px;
+  max-width: 280px; /* Slightly reduced max-width */
+  padding: 15px; /* Reduced padding */
   border: none;
   border-radius: 0;
   background-color: white;
@@ -38,29 +38,31 @@ const StyledForm = styled.div`
 `;
 
 const StyledLabel = styled.label`
-  margin-top: 10px;
+  margin-top: 8px; /* Reduced margin */
   font-weight: bold;
   text-align: left;
   width: 100%;
+  font-size: 14px; /* Slightly smaller font size */
 `;
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 6px; /* Reduced padding */
+  margin-top: 3px; /* Reduced margin */
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 14px; /* Slightly smaller font size */
 `;
 
 const StyledButton = styled.button`
   background-color: #217346;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 8px 15px; /* Reduced padding */
+  font-size: 16px; /* Slightly smaller font size */
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 15px; /* Reduced margin */
 
   &:hover {
     background-color: #1a5c38;
@@ -69,27 +71,40 @@ const StyledButton = styled.button`
 
 const StyledNavButton = styled(StyledButton)`
   background-color: #a9a9a9;
+  margin: 3px; /* Reduced margin */
 
   &:hover {
     background-color: #808080;
   }
 `;
 
+const StyledResetButton = styled(StyledButton)`
+  background-color: #f44336; /* Red color for reset */
+
+  &:hover {
+    background-color: #d32f2f;
+  }
+`;
+
 const ButtonContainer = styled.div`
-  margin-top: 10px;
+  margin-top: 8px; /* Reduced margin */
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
 `;
 
 const StyledMessage = styled.p`
   color: #217346;
   font-weight: bold;
-  margin-top: 10px;
-  background-color: #e6ffe6; /* Light green background for visibility */
-  border: 1px solid #217346; /* Green border for visibility */
-  padding: 5px;
+  margin-top: 8px; /* Reduced margin */
+  background-color: #e6ffe6;
+  border: 1px solid #217346;
+  padding: 4px; /* Reduced padding */
   border-radius: 4px;
+  font-size: 14px; /* Slightly smaller font size */
 `;
 
-const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
+const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep, resetLesson }) => {
   const { t } = useTranslation();
   const [lookupValue, setLookupValue] = useState("F5");
   const [lookupArray, setLookupArray] = useState("A6:A15");
@@ -191,6 +206,7 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
 
         sheet.getRange("F7").select();
 
+
         await context.sync();
 
         setMessage(t("formula_inserted_success"));
@@ -217,12 +233,11 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep }) => {
         <StyledLabel>{t("return_array_label")}</StyledLabel>
         <StyledInput type="text" value={returnArray} onFocus={() => handleFocus("returnArray", returnArray)} onChange={(e) => setReturnArray(e.target.value)} />
       </StyledForm>
-      <StyledButton onClick={handleInsertFormula}>{t("insert_formula_button")}</StyledButton>
-      {message && <StyledMessage>{message}</StyledMessage>}
       <ButtonContainer>
-        <StyledNavButton onClick={() => { console.log("Previous button clicked in XlookupFormulaTest"); goToPreviousStep(); }}>&#9664;</StyledNavButton>
-        <StyledNavButton onClick={() => { console.log("Next button clicked in XlookupFormulaTest"); goToNextStep(); }}>&#9654;</StyledNavButton>
+        <StyledButton onClick={handleInsertFormula}>{t("insert_formula_button")}</StyledButton>
+        <StyledResetButton onClick={resetLesson}>{t("reset_lesson_button")}</StyledResetButton>
       </ButtonContainer>
+      {message && <StyledMessage>{message}</StyledMessage>}
     </StyledContainer>
   );
 };

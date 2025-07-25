@@ -37,5 +37,6 @@
   "multiple_formula_label": "Formula Múltiple:",
   "checkmark": "✔",
   "formula_inserted_success": "¡Fórmula insertada con éxito!",
-  "formula_inserted_error": "Error al insertar la fórmula. Por favor, inténtalo de nuevo."
+  "formula_inserted_error": "Error al insertar la fórmula. Por favor, inténtalo de nuevo.",
+  "reset_lesson_button": "Reiniciar Lección"
 }

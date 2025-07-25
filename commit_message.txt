@@ -1,5 +1,8 @@
-feat(UX): Add confirmation messages to formula tests
+feat(UX): Relocate reset button and refine footer navigation
 
-- Implemented temporary success/error messages after formula insertion in `XlookupFormulaTest.js` and `XlookupMultipleSearch.js`.
-- Messages are displayed for 5 seconds and then disappear.
-- Added corresponding translation keys for confirmation messages in `en/translation.json` and `es/translation.json`.
+- Moved the 'Reset Lesson' button from the fixed footer to individual lesson components (`XlookupIntroduction.js`, `XlookupFormulaTest.js`, `XlookupMultipleSearch.js`) to be alongside action buttons.
+- Refined the fixed footer in `App.jsx` to exclusively contain and center the navigation buttons (Previous/Next).
+- Passed the `resetLesson` function as a prop down to the lesson components.
+- Applied compactness styling to `XlookupFormulaTest.js` and `XlookupMultipleSearch.js`.
+- Added `clearAllContentAndFormats` to `excelFormatters.js` for comprehensive sheet clearing on reset.
+- Adjusted lesson progress loading and reset logic to always start from the introduction (step 0) on reset or initial load if no progress is saved.

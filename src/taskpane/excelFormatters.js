@@ -74,3 +74,10 @@ export function clearAllRangeFills(context) {
   usedRange.format.fill.clear();
   return usedRange;
 }
+
+export function clearAllContentAndFormats(context) {
+  const sheet = context.workbook.worksheets.getActiveWorksheet();
+  const usedRange = sheet.getUsedRange();
+  usedRange.clear(); // Clears content and formatting
+  return usedRange;
+}
