@@ -1,6 +1,4 @@
-feat: Add XLOOKUP Error Handling and Formula Resilience lessons
+feat: Add XLOOKUP Formula Resilience screen content and translations
 
-- Created `XlookupErrorHandling.js` to demonstrate XLOOKUP's 4th argument for handling non-found values.
-- Created `XlookupFormulaResilience.js` to show how XLOOKUP formulas automatically update when columns are moved.
-- Added new translation keys for both new lessons.
-- Integrated both new components into the `lessonSteps` array in `App.jsx`.
+- Added title and description translations for the XLOOKUP Formula Resilience screen.
+- Ensured the move columns action in `XlookupFormulaResilience.js` also deletes the original columns B and C.

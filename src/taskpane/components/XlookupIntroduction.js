@@ -158,7 +158,7 @@ const XlookupIntroduction = ({ goToNextStep, resetLesson }) => {
 
         setRangeRight(context, "E5:E16");
 
-        setColumnWidth(context, ["A", "C", "D", "F", "G"], 75);
+        setColumnWidth(context, ["A", "C", "D", "F", "G", "I", "J"], 75);
         setColumnWidth(context, ["D"], 30);
         setColumnWidth(context, ["E"], 130);
         setColumnWidth(context, ["B"], 100);

@@ -118,6 +118,9 @@ const XlookupFormulaResilience = ({ goToNextStep, goToPreviousStep, resetLesson 
         const targetRange = sheet.getRange("I:I");
         rangeToMove.moveTo(targetRange);
 
+        // Delete columns B and C
+        sheet.getRange("B:C").delete(Excel.DeleteShiftDirection.left);
+
         await context.sync();
 
         setMessage(t("columns_moved_success"));

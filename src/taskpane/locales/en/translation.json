@@ -42,5 +42,8 @@
   "reset_lesson_button": "Reset Lesson",
   "error_handling_title": "Error Handling with XLOOKUP",
   "error_handling_text": "XLOOKUP allows you to specify a value to return if no match is found. Let's try to search for a non-existent ID and display a custom message.",
-  "param_if_not_found": "If Not Found"
+  "param_if_not_found": "If Not Found",
+  "formula_resilience_title": "Formula Resilience",
+  "formula_resilience_text": "Move the data and see how the formulas update automatically.",
+  "move_columns_button": "Move Columns B & C to I"
 }

@@ -42,5 +42,8 @@
   "reset_lesson_button": "Reiniciar Lección",
   "error_handling_title": "Manejo de Errores con BUSCARX",
   "error_handling_text": "BUSCARX te permite especificar un valor a devolver si no se encuentra ninguna coincidencia. Intentemos buscar un ID inexistente y mostrar un mensaje personalizado.",
-  "param_if_not_found": "Si no se encuentra"
+  "param_if_not_found": "Si no se encuentra",
+  "formula_resilience_title": "Resiliencia de Fórmulas",
+  "formula_resilience_text": "Mueve los datos y observa cómo las fórmulas se actualizan solas.",
+  "move_columns_button": "Mover Columnas B y C a I"
 }

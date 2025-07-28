@@ -5,6 +5,7 @@ import XlookupIntroduction from "./XlookupIntroduction";
 import XlookupFormulaTest from "./XlookupFormulaTest";
 import XlookupMultipleSearch from "./XlookupMultipleSearch";
 import XlookupErrorHandling from "./XlookupErrorHandling";
+import XlookupFormulaResilience from "./XlookupFormulaResilience";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { clearAllContentAndFormats, clearAllRangeFills } from "../excelFormatters";
