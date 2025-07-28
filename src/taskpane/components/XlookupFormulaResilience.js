@@ -112,7 +112,7 @@ const XlookupFormulaResilience = ({ goToNextStep, goToPreviousStep, resetLesson 
     try {
       await Excel.run(async (context) => {
         const sheet = context.workbook.worksheets.getActiveWorksheet();
-        
+
         // Move columns B and C to column I
         const rangeToMove = sheet.getRange("B:C");
         const targetRange = sheet.getRange("I:I");
@@ -120,6 +120,14 @@ const XlookupFormulaResilience = ({ goToNextStep, goToPreviousStep, resetLesson 
 
         // Delete columns B and C
         sheet.getRange("B:C").delete(Excel.DeleteShiftDirection.left);
+
+        // Apply colors to relevant ranges AFTER columns are moved and deleted
+        setRangeFillColor(context, "D5", "#DAE9F8");
+        setRangeFillColor(context, "C11:D11", "#DAE9F8");
+        setRangeFillColor(context, "A6:A15", "#FFCDCD");
+        setRangeFillColor(context, "C12:D12", "#FFCDCD");
+        setRangeFillColor(context, "G6:H15", "#E8D9F3");
+        setRangeFillColor(context, "C13:D13", "#E8D9F3");
 
         await context.sync();
 

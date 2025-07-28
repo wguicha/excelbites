@@ -1,4 +1,4 @@
-feat: Add XLOOKUP Formula Resilience screen content and translations
+fix: Apply colors after column deletion in XlookupFormulaResilience
 
-- Added title and description translations for the XLOOKUP Formula Resilience screen.
-- Ensured the move columns action in `XlookupFormulaResilience.js` also deletes the original columns B and C.
+- Moved the color application logic in `XlookupFormulaResilience.js` to occur after the columns B and C are moved and deleted.
+- This ensures that the visual formatting reflects the updated state of the worksheet.

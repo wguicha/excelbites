@@ -206,7 +206,7 @@ const XlookupErrorHandling = ({ goToNextStep, goToPreviousStep, resetLesson }) =
 
         setRangeBold(context, "E11:E16");
         setRangeFillColor(context, "F5", "#DAE9F8");
-        setRangeFillColor(context, "E11", "#DAE9F8");
+        setRangeFillColor(context, "E11:F11", "#DAE9F8");
         setRangeFillColor(context, "A6:A15", "#FFCDCD");
         setRangeFillColor(context, "E12:F12", "#FFCDCD");
         setRangeFillColor(context, "C6:C15", "#E8D9F3");
