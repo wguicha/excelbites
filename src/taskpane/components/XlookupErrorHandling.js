@@ -7,21 +7,21 @@ import { setRangeBold, setRangeFillColor, clearRangeFill } from "../excelFormatt
 
 const StyledContainer = styled.div`
   text-align: center;
-  padding: 15px; /* Reduced padding */
+  padding: 10px; /* Further reduced padding */
   background-color: white;
   font-family: Arial, sans-serif;
 `;
 
 const StyledTitle = styled.h1`
   color: #217346;
-  font-size: 24px; /* Slightly smaller font size */
-  margin-bottom: 10px; /* Reduced margin */
+  font-size: 22px; /* Further smaller font size */
+  margin-bottom: 8px; /* Reduced margin */
 `;
 
 const StyledText = styled.p`
-  font-size: 14px; /* Slightly smaller font size */
-  line-height: 1.4;
-  margin-bottom: 15px; /* Reduced margin */
+  font-size: 13px; /* Further smaller font size */
+  line-height: 1.3;
+  margin-bottom: 10px; /* Reduced margin */
 `;
 
 const StyledForm = styled.div`
@@ -29,8 +29,8 @@ const StyledForm = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 0 auto;
-  max-width: 280px; /* Slightly reduced max-width */
-  padding: 15px; /* Reduced padding */
+  max-width: 260px; /* Further reduced max-width */
+  padding: 10px; /* Reduced padding */
   border: none;
   border-radius: 0;
   background-color: white;
@@ -38,31 +38,31 @@ const StyledForm = styled.div`
 `;
 
 const StyledLabel = styled.label`
-  margin-top: 8px; /* Reduced margin */
+  margin-top: 6px; /* Reduced margin */
   font-weight: bold;
   text-align: left;
   width: 100%;
-  font-size: 14px; /* Slightly smaller font size */
+  font-size: 13px; /* Further smaller font size */
 `;
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 6px; /* Reduced padding */
-  margin-top: 3px; /* Reduced margin */
+  padding: 5px; /* Reduced padding */
+  margin-top: 2px; /* Reduced margin */
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 14px; /* Slightly smaller font size */
+  font-size: 13px; /* Further smaller font size */
 `;
 
 const StyledButton = styled.button`
   background-color: #217346;
   color: white;
   border: none;
-  padding: 8px 15px; /* Reduced padding */
-  font-size: 16px; /* Slightly smaller font size */
+  padding: 6px 12px; /* Further reduced padding */
+  font-size: 14px; /* Further smaller font size */
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 15px; /* Reduced margin */
+  margin-top: 10px; /* Reduced margin */
 
   &:hover {
     background-color: #1a5c38;
@@ -71,7 +71,7 @@ const StyledButton = styled.button`
 
 const StyledNavButton = styled(StyledButton)`
   background-color: #a9a9a9;
-  margin: 3px; /* Reduced margin */
+  margin: 2px; /* Reduced margin */
 
   &:hover {
     background-color: #808080;
@@ -87,21 +87,21 @@ const StyledResetButton = styled(StyledButton)`
 `;
 
 const ButtonContainer = styled.div`
-  margin-top: 8px; /* Reduced margin */
+  margin-top: 6px; /* Reduced margin */
   display: flex;
   justify-content: center;
-  gap: 10px; /* Space between buttons */
+  gap: 8px; /* Reduced space between buttons */
 `;
 
 const StyledMessage = styled.p`
   color: #217346;
   font-weight: bold;
-  margin-top: 8px; /* Reduced margin */
+  margin-top: 6px; /* Reduced margin */
   background-color: #e6ffe6;
   border: 1px solid #217346;
-  padding: 4px; /* Reduced padding */
+  padding: 3px; /* Reduced padding */
   border-radius: 4px;
-  font-size: 14px; /* Slightly smaller font size */
+  font-size: 13px; /* Further smaller font size */
 `;
 
 const XlookupErrorHandling = ({ goToNextStep, goToPreviousStep, resetLesson }) => {

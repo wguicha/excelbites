@@ -8,31 +8,31 @@ import { setRangeBold, clearRange, autofitColumns, setColumnWidth, setRangeCente
 
 const StyledContainer = styled.div`
   text-align: center;
-  padding: 15px; /* Reduced padding */
+  padding: 10px; /* Further reduced padding */
   background-color: white;
   font-family: Arial, sans-serif;
 `;
 
 const StyledLogo = styled.img`
-  max-width: 120px; /* Slightly smaller logo */
-  margin-bottom: 15px; /* Reduced margin */
+  max-width: 100px; /* Even smaller logo */
+  margin-bottom: 10px; /* Reduced margin */
 `;
 
 const StyledTitle = styled.h1`
   color: #217346;
-  font-size: 24px; /* Slightly smaller font size */
-  margin-bottom: 10px; /* Reduced margin */
+  font-size: 22px; /* Further smaller font size */
+  margin-bottom: 8px; /* Reduced margin */
 `;
 
 const StyledParagraph = styled.p`
-  font-size: 14px; /* Slightly smaller font size */
-  line-height: 1.4;
-  margin-bottom: 15px; /* Reduced margin */
+  font-size: 13px; /* Further smaller font size */
+  line-height: 1.3;
+  margin-bottom: 10px; /* Reduced margin */
 `;
 
 const StyledAdvantagesContainer = styled.div`
-  margin: 15px 0; /* Reduced margin */
-  padding: 10px; /* Reduced padding */
+  margin: 10px 0; /* Reduced margin */
+  padding: 8px; /* Reduced padding */
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -41,8 +41,8 @@ const StyledAdvantagesContainer = styled.div`
 
 const StyledAdvantagesTitle = styled.h2`
   color: #217346;
-  font-size: 18px; /* Slightly smaller font size */
-  margin-bottom: 8px; /* Reduced margin */
+  font-size: 16px; /* Further smaller font size */
+  margin-bottom: 6px; /* Reduced margin */
   text-align: center;
 `;
 
@@ -53,27 +53,27 @@ const StyledAdvantagesList = styled.ul`
 `;
 
 const StyledAdvantageItem = styled.li`
-  font-size: 14px; /* Slightly smaller font size */
-  margin-bottom: 5px; /* Reduced margin */
+  font-size: 13px; /* Further smaller font size */
+  margin-bottom: 4px; /* Reduced margin */
   display: flex;
   align-items: center;
 `;
 
 const CheckMark = styled.span`
   color: #217346;
-  font-size: 18px; /* Slightly smaller font size */
-  margin-right: 8px; /* Reduced margin */
+  font-size: 16px; /* Further smaller font size */
+  margin-right: 6px; /* Reduced margin */
 `;
 
 const StyledButton = styled.button`
   background-color: #217346;
   color: white;
   border: none;
-  padding: 8px 15px; /* Reduced padding */
-  font-size: 16px; /* Slightly smaller font size */
+  padding: 6px 12px; /* Further reduced padding */
+  font-size: 14px; /* Further smaller font size */
   cursor: pointer;
   border-radius: 5px;
-  margin: 3px; /* Reduced margin */
+  margin: 2px; /* Reduced margin */
 
   &:hover {
     background-color: #1a5c38;
@@ -97,10 +97,10 @@ const StyledResetButton = styled(StyledButton)`
 `;
 
 const ButtonContainer = styled.div`
-  margin-top: 8px; /* Reduced margin */
+  margin-top: 6px; /* Reduced margin */
   display: flex;
   justify-content: center;
-  gap: 10px; /* Space between buttons */
+  gap: 8px; /* Reduced space between buttons */
 `;
 
 const XlookupIntroduction = ({ goToNextStep, resetLesson }) => {
