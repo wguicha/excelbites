@@ -22,7 +22,7 @@
   "param_lookup_array": "Lookup Array",
   "param_return_array": "Return Array",
   "if_not_found_label": "If Not Found",
-  "if_not_found_value": "Code not found",
+  "if_not_found_value": "Not found",
   "not_specified": "Not specified",
   "match_mode_label": "Match Mode",
   "exact_match_default": "Exact match (default)",
@@ -45,5 +45,5 @@
   "param_if_not_found": "If Not Found",
   "formula_resilience_title": "Formula Resilience",
   "formula_resilience_text": "Move the data and see how the formulas update automatically.",
-  "move_columns_button": "Move Columns B & C to I"
+  "move_columns_button": "Move Columns"
 }

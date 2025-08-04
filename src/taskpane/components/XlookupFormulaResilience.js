@@ -58,14 +58,20 @@ const StyledButton = styled.button`
   background-color: #217346;
   color: white;
   border: none;
-  padding: 8px 15px; /* Reduced padding */
-  font-size: 16px; /* Slightly smaller font size */
+  padding: 6px 12px; /* Further reduced padding */
+  font-size: 14px; /* Further smaller font size */
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 15px; /* Reduced margin */
+  margin-top: 10px; /* Reduced margin */
+  min-width: 150px; /* Added min-width for consistent sizing */
 
   &:hover {
     background-color: #1a5c38;
+  }
+
+  &:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
   }
 `;
 
@@ -107,12 +113,13 @@ const StyledMessage = styled.p`
 const XlookupFormulaResilience = ({ goToNextStep, goToPreviousStep, resetLesson }) => {
   const { t } = useTranslation();
   const [message, setMessage] = useState(null);
+  const [isMoveButtonDisabled, setIsMoveButtonDisabled] = useState(false);
 
   const handleMoveColumns = async () => {
     try {
       await Excel.run(async (context) => {
         const sheet = context.workbook.worksheets.getActiveWorksheet();
-
+        
         // Move columns B and C to column I
         const rangeToMove = sheet.getRange("B:C");
         const targetRange = sheet.getRange("I:I");
@@ -122,16 +129,14 @@ const XlookupFormulaResilience = ({ goToNextStep, goToPreviousStep, resetLesson 
         sheet.getRange("B:C").delete(Excel.DeleteShiftDirection.left);
 
         // Apply colors to relevant ranges AFTER columns are moved and deleted
-        setRangeFillColor(context, "D5", "#DAE9F8");
-        setRangeFillColor(context, "C11:D11", "#DAE9F8");
+        setRangeFillColor(context, "F5", "#DAE9F8");
         setRangeFillColor(context, "A6:A15", "#FFCDCD");
-        setRangeFillColor(context, "C12:D12", "#FFCDCD");
-        setRangeFillColor(context, "G6:H15", "#E8D9F3");
-        setRangeFillColor(context, "C13:D13", "#E8D9F3");
+        setRangeFillColor(context, "C6:C15", "#E8D9F3");
 
         await context.sync();
 
         setMessage(t("columns_moved_success"));
+        setIsMoveButtonDisabled(true); // Disable the button after successful operation
         setTimeout(() => setMessage(null), 5000); // Clear message after 5 seconds
       });
     } catch (error) {
@@ -146,7 +151,7 @@ const XlookupFormulaResilience = ({ goToNextStep, goToPreviousStep, resetLesson 
       <StyledTitle>{t("formula_resilience_title")}</StyledTitle>
       <StyledText>{t("formula_resilience_text")}</StyledText>
       <ButtonContainer>
-        <StyledButton onClick={handleMoveColumns}>{t("move_columns_button")}</StyledButton>
+        <StyledButton onClick={handleMoveColumns} disabled={isMoveButtonDisabled}>{t("move_columns_button")}</StyledButton>
         <StyledResetButton onClick={resetLesson}>{t("reset_lesson_button")}</StyledResetButton>
       </ButtonContainer>
       {message && <StyledMessage>{message}</StyledMessage>}

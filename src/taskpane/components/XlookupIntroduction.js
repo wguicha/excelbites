@@ -74,6 +74,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   border-radius: 5px;
   margin: 2px; /* Reduced margin */
+  min-width: 150px; /* Added min-width for consistent sizing */
 
   &:hover {
     background-color: #1a5c38;

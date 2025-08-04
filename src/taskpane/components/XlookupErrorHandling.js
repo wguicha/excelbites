@@ -63,6 +63,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   border-radius: 5px;
   margin-top: 10px; /* Reduced margin */
+  min-width: 150px; /* Added min-width for consistent sizing */
 
   &:hover {
     background-color: #1a5c38;
@@ -214,6 +215,8 @@ const XlookupErrorHandling = ({ goToNextStep, goToPreviousStep, resetLesson }) =
         setRangeFillColor(context, "E14:F14", "#D0F0C0"); // New color for if_not_found
 
         sheet.getRange("F7").select();
+
+        sheet.getRange("F5").values = [[999]]; // Default search ID
 
         await context.sync();
 

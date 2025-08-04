@@ -32,21 +32,26 @@ const StyledNavButton = styled(StyledButton)`
   &:hover {
     background-color: #1a5c38;
   }
+
+  &:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
 `;
 
 const StyledFooter = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 100%; /* Set width to 100% */
+  box-sizing: border-box; /* Include padding in width calculation */
   background-color: #f0f0f0; /* Light gray background for footer */
   padding: 10px 15px;
   display: flex;
-  justify-content: center; /* Center content */
+  justify-content: space-between; /* Distribute items with space between them */
   align-items: center;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  gap: 10px; /* Space between nav buttons */
 `;
 
 const StyledNavButtonsContainer = styled.div`
@@ -153,14 +158,12 @@ const App = (props) => {
         resetLesson={resetLesson}
       />
       <StyledFooter>
+        <div style={{ flex: 1 }}></div> {/* Left spacer */}
         <StyledNavButtonsContainer>
-          {currentStepIndex > 0 && (
-            <StyledNavButton onClick={goToPreviousStep}>&#9664;</StyledNavButton>
-          )}
-          {currentStepIndex < lessonSteps.length - 1 && (
-            <StyledNavButton onClick={goToNextStep}>&#9654;</StyledNavButton>
-          )}
+          <StyledNavButton onClick={goToPreviousStep} disabled={currentStepIndex === 0}>&#9664;</StyledNavButton>
+          <StyledNavButton onClick={goToNextStep} disabled={currentStepIndex === lessonSteps.length - 1}>&#9654;</StyledNavButton>
         </StyledNavButtonsContainer>
+        <div style={{ flex: 1 }}></div> {/* Right spacer */}
       </StyledFooter>
     </div>
   );

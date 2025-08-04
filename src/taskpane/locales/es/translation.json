@@ -1,6 +1,6 @@
 {
   "introduction_title": "¡Revoluciona tus Búsquedas!",
-  "introduction_text": "Olvídate de las limitaciones de BUSCARV y BUSCARH. Con <b>BUSCARX</b>, entras a una nueva era de búsquedas en Excel. Es más potente, más flexible y mucho más fácil de usar. <br><br><b>¡Comencemos!</b>",
+  "introduction_text": "Olvídate de las limitaciones de BUSCARV y BUSCARH. Con <b>BUSCARX</b>, entras a una nueva era de búsquedas en Excel. Es más potente, más flexible y mucho más fácil de usar. <br><br><b>¡Comencemos preparando los datos!</b>",
   "prepare_data_button": "Preparar Datos",
   "formula_test_title": "Probemos la Fórmula con una busqueda simple",
   "formula_test_text": "Vamos a insertar en la celda F7 una formula simple que nos busque el Producto correspondiente al ID de la celda F5",
@@ -22,7 +22,7 @@
   "param_lookup_array": "Matriz de Búsqueda",
   "param_return_array": "Matriz de Devolución",
   "if_not_found_label": "Si no se encuentra",
-  "if_not_found_value": "Código no encontrado",
+  "if_not_found_value": "No encontrado",
   "not_specified": "No especificado",
   "match_mode_label": "Modo de coincidencia",
   "exact_match_default": "Coincidencia exacta (predeterminado)",
@@ -45,5 +45,5 @@
   "param_if_not_found": "Si no se encuentra",
   "formula_resilience_title": "Resiliencia de Fórmulas",
   "formula_resilience_text": "Mueve los datos y observa cómo las fórmulas se actualizan solas.",
-  "move_columns_button": "Mover Columnas B y C a I"
+  "move_columns_button": "Mover Columnas"
 }
