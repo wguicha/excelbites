@@ -142,7 +142,7 @@ const XlookupIntroduction = ({ goToNextStep, resetLesson }) => {
           [107, "Headphones", 150],
           [108, "Printer", 200],
           [109, "Scanner", 100],
-          [110, "External Hard Drive", 90],
+          [110, "Hard Drive", 90],
         ];
         sheet.getRange("A6:C" + (data.length + 5)).values = data;
         setRangeCenter(context, "A6:A" + (data.length + 5));
@@ -159,10 +159,9 @@ const XlookupIntroduction = ({ goToNextStep, resetLesson }) => {
 
         setRangeRight(context, "E5:E16");
 
-        setColumnWidth(context, ["A", "C", "D", "F", "G", "I", "J"], 75);
+        setColumnWidth(context, ["A", "B", "C", "F", "G", "I", "J"], 75);
         setColumnWidth(context, ["D"], 30);
         setColumnWidth(context, ["E"], 130);
-        setColumnWidth(context, ["B"], 100);
         //await autofitColumns(context, sheet.getUsedRange());
 
         // Set cursor to F7

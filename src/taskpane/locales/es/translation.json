@@ -45,5 +45,10 @@
   "param_if_not_found": "Si no se encuentra",
   "formula_resilience_title": "Resiliencia de Fórmulas",
   "formula_resilience_text": "Mueve los datos y observa cómo las fórmulas se actualizan solas.",
-  "move_columns_button": "Mover Columnas"
+  "move_columns_button": "Mover Columnas",
+  "columns_moved_success": "¡Columnas movidas con éxito!",
+  "columns_moved_error": "Error al mover las columnas. Por favor, inténtalo de nuevo.",
+  "restore_columns_button": "Restaurar Columnas",
+  "columns_restored_success": "¡Columnas restauradas con éxito!",
+  "columns_restored_error": "Error al restaurar las columnas. Por favor, inténtalo de nuevo."
 }

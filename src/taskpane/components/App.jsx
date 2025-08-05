@@ -107,11 +107,22 @@ const App = (props) => {
   const goToNextStep = async () => {
     console.log("goToNextStep called. Current index:", currentStepIndex);
     if (currentStepIndex < lessonSteps.length - 1) {
+      const nextStepIndex = currentStepIndex + 1;
+      const nextStepComponent = lessonSteps[nextStepIndex];
+
       await Excel.run(async (context) => {
         clearAllRangeFills(context);
+
+        // Special handling for XlookupFormulaResilience step
+        if (nextStepComponent.name === "XlookupFormulaResilience") {
+          const sheet = context.workbook.worksheets.getActiveWorksheet();
+          sheet.getRange("F5").values = [[104]]; // Set a valid search ID
+        }
+
         await context.sync();
       });
-      setCurrentStepIndex(prevIndex => prevIndex + 1);
+
+      setCurrentStepIndex(nextStepIndex);
     }
   };
 

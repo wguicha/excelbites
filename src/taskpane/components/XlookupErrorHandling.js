@@ -184,6 +184,7 @@ const XlookupErrorHandling = ({ goToNextStep, goToPreviousStep, resetLesson }) =
     try {
       await Excel.run(async (context) => {
         const sheet = context.workbook.worksheets.getActiveWorksheet();
+        sheet.getRange("E9:F9").clear(Excel.ClearApplyTo.contents);
         // Generate formula with commas as separators, including the 4th argument
         const formula = `=XLOOKUP(${lookupValue},${lookupArray},${returnArray},"${ifNotFoundMessage}")`;
 
@@ -198,11 +199,9 @@ const XlookupErrorHandling = ({ goToNextStep, goToPreviousStep, resetLesson }) =
           [t("param_lookup_array") + ":", lookupArray],
           [t("param_return_array") + ":", returnArray],
           [t("param_if_not_found") + ":", `"${ifNotFoundMessage}"`], // Display the message in quotes
-          [t("match_mode_label") + ":", t("exact_match_default")],
-          [t("search_mode_label") + ":", t("first_to_last_default")],
         ];
 
-        const descriptionRange = sheet.getRange("E11:F16");
+        const descriptionRange = sheet.getRange("E11:F14");
         descriptionRange.values = descriptions;
 
         setRangeBold(context, "E11:E16");
