@@ -207,6 +207,25 @@ const XlookupFormulaTest = ({ goToNextStep, goToPreviousStep, resetLesson }) => 
 
         sheet.getRange("F7").select();
 
+        // Add callout shape
+        const shape = sheet.shapes.addGeometricShape(Excel.GeometricShapeType.LeftRightArrowCallout);
+        shape.left = 250;
+        shape.top = 100;
+        shape.height = 50; // Initial height, will be auto-sized
+        shape.width = 150; // Initial width, will be auto-sized
+
+        // Configure the text
+        const textFrame = shape.textFrame;
+        textFrame.textRange.text = t("formula_result_callout");
+        textFrame.horizontalAlignment = Excel.ShapeTextHorizontalAlignment.center;
+        textFrame.verticalAlignment = Excel.ShapeTextVerticalAlignment.center;
+        textFrame.autoSizeSetting = Excel.ShapeAutoSize.shapeToFitText;
+
+        // Configure the appearance
+        shape.fill.setSolidColor("#FFFF00"); // Yellow fill
+        shape.lineFormat.color = "#000000"; // Black line
+
+        await context.sync();
 
         await context.sync();
 

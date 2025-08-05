@@ -50,5 +50,15 @@
   "columns_moved_error": "Error moving columns. Please try again.",
   "restore_columns_button": "Restore Columns",
   "columns_restored_success": "Columns restored successfully!",
-  "columns_restored_error": "Error restoring columns. Please try again."
+  "columns_restored_error": "Error restoring columns. Please try again.",
+  "horizontal_search_title": "Horizontal Search with XLOOKUP",
+  "horizontal_search_text": "XLOOKUP can also search horizontally. Let's prepare some data arranged in rows.",
+  "prepare_horizontal_data_button": "Prepare Horizontal Data",
+  "month_header": "Month",
+  "sales_header": "Sales",
+  "search_month_label": "Search Month:",
+  "month_january": "January",
+  "month_february": "February",
+  "month_march": "March",
+  "formula_result_callout": "Here we see the result"
 }
