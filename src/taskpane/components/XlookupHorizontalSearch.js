@@ -2,57 +2,15 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 import { setRangeBold, clearRange } from '../excelFormatters';
-
-const StyledContainer = styled.div`
-  text-align: center;
-  padding: 15px;
-  background-color: white;
-  font-family: Arial, sans-serif;
-`;
-
-const StyledTitle = styled.h1`
-  color: #217346;
-  font-size: 24px;
-  margin-bottom: 10px;
-`;
-
-const StyledText = styled.p`
-  font-size: 14px;
-  line-height: 1.4;
-  margin-bottom: 15px;
-`;
-
-const StyledButton = styled.button`
-  background-color: #217346;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-
-  &:hover {
-    background-color: #1a5c38;
-  }
-`;
-
-const StyledResetButton = styled(StyledButton)`
-  background-color: #f44336; /* Red color for reset */
-
-  &:hover {
-    background-color: #d32f2f;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-`;
+import {
+  StyledContainer,
+  StyledTitle,
+  StyledText,
+  StyledButton,
+  StyledResetButton,
+  ButtonContainer,
+} from './styles/XlookupHorizontalSearch.styles';
 
 const XlookupHorizontalSearch = ({ resetLesson }) => {
   const { t } = useTranslation();
